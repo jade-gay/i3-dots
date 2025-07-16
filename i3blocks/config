@@ -1,0 +1,14 @@
+[weather]
+command=~/.config/i3blocks/scripts/weather
+interval=600
+color=#eceff4
+
+[volume]
+command=~/.config/i3blocks/scripts/volume
+interval=once
+signal=1
+
+[time]
+command=date +%r 
+interval=1
+color=#eceff4

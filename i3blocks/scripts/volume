@@ -1,0 +1,32 @@
+#!/bin/bash
+
+SINK=$(pactl get-default-sink)
+
+cap_volume() {
+    VOLUME_RAW=$(pactl get-sink-volume "$SINK" | grep -oP '\d+(?=%)' | head -1)
+    if (( VOLUME_RAW > 150 )); then
+        pactl set-sink-volume "$SINK" 150%
+    fi
+}
+
+case "$BLOCK_BUTTON" in
+    1)  # toggle mute on left click
+        pactl set-sink-mute "$SINK" toggle
+        ;;
+    4)  # scroll up
+        pactl set-sink-volume "$SINK" +5%
+        cap_volume
+        ;;
+    5)  # scroll down
+        pactl set-sink-volume "$SINK" -5%
+        ;;
+esac
+
+VOLUME=$(pactl get-sink-volume "$SINK" | grep -oP '\d+%' | head -1)
+MUTED=$(pactl get-sink-mute "$SINK" | grep -o "yes")
+
+if [[ $MUTED == "yes" ]]; then
+    echo "MUTED"
+else
+    echo "VOL $VOLUME"
+fi

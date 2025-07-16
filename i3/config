@@ -1,0 +1,107 @@
+set $mod Mod4
+set $shiftMod Shift+Mod4
+set $term kitty
+set $firefox firefox
+set $launcher rofi -show drun
+set $fileManager thunar
+
+set $border_active "#D8DEE9"
+set $border_inactive "#434C5E"
+set $border_urgent "#BF616A"
+
+set $bar_background "#3b4252"
+set $bar_focused "#5e81ac"
+set $bar_active "#e5e9f0"
+set $bar_inactive "#3b4252"
+
+font pango:FiraCode Nerd Font 10
+
+bindsym $mod+Return exec $term
+bindsym $mod+f exec $firefox
+bindsym $mod+r exec $launcher
+bindsym $mod+e exec $fileManager
+bindsym $shiftMod+s exec maim -s | xclip -selection clipboard -t image/png -i
+bindsym $mod+c kill
+bindsym $shiftMod+r reload
+bindsym $mod+space fullscreen toggle
+bindsym $mod+v floating toggle ; \
+  [floating class="kitty"] resize set 500 300 ; \
+  [floating class="firefox"] resize set 1200 800 ; \
+  [floating class="Thunar"] resize set 900 800 ; \
+  [floating class="discord"] resize set 1200 900 ; \
+  move position center
+bindsym $mod+m exec i3-msg exit
+
+floating_modifier $mod
+
+bindsym $shiftMod+Left move left
+bindsym $shiftMod+Right move right
+bindsym $shiftMod+Up move up
+bindsym $shiftMod+Down move down
+
+bindsym $mod+Left focus left ; exec --no-startup-id ~/.config/i3/scripts/move-cursor-to-focused
+bindsym $mod+Right focus right ; exec --no-startup-id ~/.config/i3/scripts/move-cursor-to-focused
+bindsym $mod+Up focus up ; exec --no-startup-id ~/.config/i3/scripts/move-cursor-to-focused 
+bindsym $mod+Down focus down ; exec --no-startup-id ~/.config/i3/scripts/move-cursor-to-focused
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+
+bindsym $shiftMod+1 move container to workspace 1
+bindsym $shiftMod+2 move container to workspace 2
+bindsym $shiftMod+3 move container to workspace 3
+bindsym $shiftMod+4 move container to workspace 4
+bindsym $shiftMod+5 move container to workspace 5
+bindsym $shiftMod+6 move container to workspace 6
+
+exec_always --no-startup-id autotiling
+exec --no-startup-id feh --bg-scale ~/walls/nord/bubbles.png
+exec --no-startup-id openrgb -p blue.orp --autostart
+exec --no-startup-id fastcompmgr
+
+gaps horizontal 5
+gaps vertical 5
+smart_gaps off
+gaps inner 5
+
+default_border pixel 2
+default_floating_border pixel 2
+#smart_borders no
+
+client.focused   $border_active   $border_active   $border_active   $border_active   $border_active
+client.unfocused $border_inactive $border_inactive $border_inactive $border_inactive $border_inactive
+client.urgent    $border_urgent   $border_urgent   $border_urgent   $border_urgent   $border_urgent
+
+bar {
+	id bar-1
+	status_command i3blocks
+	output primary
+	position top
+	workspace_buttons yes
+	font pango:FiraCode Nerd Font 10
+	padding 1px 0
+  tray_output none
+
+	colors{
+		background $bar_background
+		focused_workspace  $bar_focused $bar_focused $border_active
+		active_workspace   $bar_focused $bar_focused $border_active
+		inactive_workspace $bar_background $bar_background $border_active
+	}
+}
+
+for_window [class="discord"] move container to output DP-4
+for_window [class="org.vinegarhq.Sober"] move container to workspace 3
+for_window [class="org.vinegarhq.Sober"] fullscreen
+for_window [class="Jellyfin Media Player"] move container to workspace 4
+for_window [class="Jellyfin Media Player"] fullscreen
+for_window [class="Thunar"] floating enable
+for_window [class="kitty"] floating enable
+for_window [class="kitty"] resize set 500 300
+# hunt showdown
+for_window [class="steam_app_594650"] fullscreen 
+for_window [class="steam_app_594650"] move container to workspace 3
