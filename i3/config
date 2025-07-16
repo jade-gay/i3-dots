@@ -59,7 +59,7 @@ bindsym $shiftMod+5 move container to workspace 5
 bindsym $shiftMod+6 move container to workspace 6
 
 exec_always --no-startup-id autotiling
-exec --no-startup-id feh --bg-scale ~/walls/nord/bubbles.png
+exec --no-startup-id sh -c 'feh --bg-scale "$(cat ~/dots/i3/.current_wallpaper)"'
 exec --no-startup-id openrgb -p blue.orp --autostart
 exec --no-startup-id fastcompmgr
 
