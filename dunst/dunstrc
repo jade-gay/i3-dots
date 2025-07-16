@@ -6,6 +6,7 @@
   width = 300
   height = (0, 300)
   origin = top-center
+  offset = (0, 35)
   progress_bar = true
   notification_limit = 2
   indicate_hidden = true

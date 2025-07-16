@@ -84,7 +84,7 @@ bar {
 	workspace_buttons yes
 	font pango:FiraCode Nerd Font 10
 	padding 1px 0
-  tray_output none
+ #tray_output none
 
 	colors{
 		background $bar_background
