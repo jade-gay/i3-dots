@@ -9,6 +9,7 @@ interval=once
 signal=1
 
 [time]
-command=date +%r 
+command=~/.config/i3blocks/scripts/time
 interval=1
+signal=1
 color=#eceff4
