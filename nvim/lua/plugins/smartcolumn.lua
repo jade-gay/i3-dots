@@ -1,5 +1,5 @@
-local config = function() 
-  require('smartcolumn').setup({
+local config = function()
+  require("smartcolumn").setup({
     colorcolumn = "100",
     disabled_filetypes = { "help", "text", "markdown" },
     custom_colorcolumn = {},
