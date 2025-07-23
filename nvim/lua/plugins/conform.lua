@@ -17,14 +17,6 @@ local config = function()
       timeout_ms = 250,
     },
   })
-
-  vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-    conform.format({
-      lsp_fallback = true,
-      async = false,
-      timeout_msg = 250,
-    })
-  end, { desc = "format file or range in (in visual mode)" })
 end
 
 return {
