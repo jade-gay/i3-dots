@@ -105,3 +105,4 @@ for_window [class="kitty"] resize set 500 300
 # hunt showdown
 for_window [class="steam_app_594650"] fullscreen 
 for_window [class="steam_app_594650"] move container to workspace 3
+for_window [class="Twintaillauncher"] floating enable

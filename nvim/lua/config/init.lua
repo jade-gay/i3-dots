@@ -24,33 +24,33 @@ if not uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('config.globals')
-require('config.options')
-require('config.keymaps')
+require("config.globals")
+require("config.options")
+require("config.keymaps")
 
 local opts = {
-	defaults = {
-		lazy = true,
-	},
-	install = {
-		colorscheme = { "nord" }
-	},
-	rtp = {
-		disabled_plugins = {
-			"gzip",
-			"matchit",
-			"matchparen",
+  defaults = {
+    lazy = true,
+  },
+  install = {
+    colorscheme = { "nord" },
+  },
+  rtp = {
+    disabled_plugins = {
+      "gzip",
+      "matchit",
+      "matchparen",
       "netrw",
-			"netrwPlugin",
-			"tarPlugin",
-			"tohtml",
-			"tutor",
-			"zipPlugin",
-		}
-	},
-	change_detection = {
-		notify = true,
-	},
+      "netrwPlugin",
+      "tarPlugin",
+      "tohtml",
+      "tutor",
+      "zipPlugin",
+    },
+  },
+  change_detection = {
+    notify = true,
+  },
 }
 
-require("lazy").setup('plugins', opts)
+require("lazy").setup("plugins", opts)
