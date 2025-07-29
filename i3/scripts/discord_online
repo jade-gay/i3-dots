@@ -1,0 +1,11 @@
+#!/bin/bash
+
+counter=0
+
+until ping -c1 discord.com &>/dev/null; do 
+  sleep 1
+  ((counter++))
+  notify-send -r 400 "discord" "starting discord total time: ${counter}s"
+done
+
+discord &

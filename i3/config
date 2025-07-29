@@ -62,6 +62,7 @@ exec_always --no-startup-id autotiling
 exec --no-startup-id sh -c 'feh --bg-scale "$(cat ~/dots/i3/.current_wallpaper)"'
 exec --no-startup-id openrgb -p blue.orp --autostart
 exec --no-startup-id fastcompmgr
+exec --no-startup-id ~/.config/i3/scripts/discord_online
 
 gaps horizontal 5
 gaps vertical 5

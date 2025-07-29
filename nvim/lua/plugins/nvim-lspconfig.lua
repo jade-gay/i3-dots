@@ -27,6 +27,10 @@ return {
       },
     })
 
+    lspconfig.qmlls.setup({
+      capabilities = capabilities,
+      cmd = { "qmlls", "-E" },
+    })
     local servers = { "pyright", "html" }
     for _, server in ipairs(servers) do
       lspconfig[server].setup({
